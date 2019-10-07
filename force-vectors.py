@@ -1,32 +1,12 @@
 import os
 from math import sqrt, degrees, acos, cos, sin, radians
-#------------------------------------------------------------------------------- little functions
-class clp(): #-------------------- colors class
-    def printg(text):print("\033[40m{}\033[00m" .format(text))
-    def printg2(text):print("\033[40m{}\033[00m" .format(text),end='')
-    def printm(text):print("\033[100m{}\033[00m" .format(text))
-    def printm2(text):print("\033[100m{}\033[00m" .format(text),end='')
-    def printr(text):print("\033[91m{}\033[00m" .format(text))
-    def printr2(text):print("\033[91m{}\033[00m" .format(text),end='')
-    def printb(text):print("\033[34m{}\033[00m" .format(text))
-    def printb2(text):print("\033[34m{}\033[00m" .format(text),end='')
-    def printy(text):print("\033[93m"+str(text)+"\033["+str(40)+"m".format(text))
-    def printy2(text):print("\033[93m{}\033[00m" .format(text),end='')
-    def printbl(text):print("\033[5m{}\033[00m" .format(text))
-    def printbl2(text):print("\033[5m{}\033[00m" .format(text),end='')
-class txt(): #-------------------- repetitive messages class
+import ui
 
-    def head(map):
-        os.system('clear')
-        clp.printb(map)
-        print(61*'-')
-    def invInput(errorHint):
-        clp.printr('-------------------------------')
-        print(errorHint)
-        clp.printr2('>>')
-        clp.printbl2(' Hit enter to try again')
-        wait = input('')
-#------------------------------------------------------------------------------- Menu
+# ui related functions
+clp = ui.colorful_prints
+txt = ui.txt
+
+# Menu
 def menu():
     number = [0,1,2,3,4,5,6,7]
     item = ['Add','Remove','TestCharge','Run','Charges','Reset','Help','Exit']
