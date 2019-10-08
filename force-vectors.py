@@ -3,16 +3,16 @@ from math import sqrt, degrees, acos, cos, sin, radians
 import ui
 
 # ui related functions
-clp = ui.colorful_prints
+#clp = ui.colorful_prints
 txt = ui.txt
 
 # Menu
 def menu():
     number = [0,1,2,3,4,5,6,7]
     item = ['Add','Remove','TestCharge','Run','Charges','Reset','Help','Exit']
-    clp.printb('1.Add    2.Remove    3.TestCharge ')
-    clp.printb('4.Run    5.Charges   6.Reset      ')
-    clp.printb('7.Help   8.Exit                   ')
+    ui.colored_print('1.Add    2.Remove    3.TestCharge ', 'printb')
+    ui.colored_print('4.Run    5.Charges   6.Reset      ', 'printb')
+    ui.colored_print('7.Help   8.Exit                   ', 'printb')
 #------------------------------------------------------------------------------- Dicts
 charges = {}
 tcharge = [1,0,0] #test charges primary intensity , x , y
@@ -25,7 +25,7 @@ def addCharge():
     while nameState == False:
         txt.head('Set name :')
         print('Assign a number to q charge, input other than number = ',end='')
-        clp.printr('cancel')
+        ui.colored_print('cancel', 'printr')
         try :
             number = int(input('>> q'))
             name = 'q'+str(number)
@@ -60,10 +60,10 @@ def addCharge():
 
     #------------------------------ success message
     txt.head('Setting name > Intensity > Position > Done!')
-    clp.printb2('added successfully: ')
+    ui.colored_print('added successfully: ', 'printb2')
     print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
-    clp.printr2('>>')
-    clp.printbl2(' Hit enter to go menu')
+    ui.colored_print('>>', 'printr2')
+    ui.colored_print(' Hit enter to go menu', 'printbl2')
     wait = input('')
     #------------------------------ put info to charges
     charges[name] = [intensity,x,y]
@@ -74,7 +74,7 @@ def remCharge():
     while removeState == False:
         txt.head('Input name :')
         print('Input charge name to remove, input other than number = ',end='')
-        clp.printr('cancel')
+        ui.colored_print('cancel', 'printr')
         try:
             number = int(input('>> q'))
             name = 'q'+str(number)
@@ -84,9 +84,9 @@ def remCharge():
                 del charges[name]
                 txt.head('Input name > Done!')
                 print(name,end='')
-                clp.printb(' removed from memory.\n')
-                clp.printr2('>>')
-                clp.printbl2(' Hit enter to open menu')
+                ui.colored_print(' removed from memory.\n', 'printb')
+                ui.colored_print('>>', 'printr2')
+                ui.colored_print(' Hit enter to open menu', 'printbl2')
                 wait = input('')
                 removeState = True
         except ValueError:
@@ -95,19 +95,19 @@ def remCharge():
 #------------------------------------------------------------------------------- Test Charge
 def testCharge():
     txt.head('Test charge options :')
-    clp.printb2('Current values -> ')
+    ui.colored_print('Current values -> ', 'printb2')
     print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
-    clp.printr2('>>')
+    ui.colored_print('>>', 'printr2')
     answer = input(' 1.Change-it  2.Go-back [1/2]: ')
     if answer =='1':
         txt.head('Test charge options > Reseting values :')
-        clp.printr2('Defaults: ')
+        ui.colored_print('Defaults: ', 'printr2')
         print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
 
         intensityState = False #------------------------------ intensity
         while intensityState == False:
             txt.head('Test charge options > Reseting values :')
-            clp.printr2('Defaults: ')
+            ui.colored_print('Defaults: ', 'printr2')
             print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
             try:
                 intensity = int(input('Intensity, can be + / - :\n>> q(MC): '))
@@ -123,7 +123,7 @@ def testCharge():
     positionState = False #------------------------------ position
     while positionState == False:
         txt.head('Test charge options > Reseting values :')
-        clp.printr2('Defaults: ')
+        ui.colored_print('Defaults: ', 'printr2')
         print('intensity: 1MC    x,y: 0,0    distanse scale: CM\n')
         try:
             print('Now set its position(C.Meter).')
@@ -141,8 +141,8 @@ def testCharge():
     #------------------------------ success message
     txt.head('Test charge options > Reseting values :')
     print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
-    clp.printr2('>>')
-    clp.printbl2(' Hit enter to go menu')
+    ui.colored_print('>>', 'printr2')
+    ui.colored_print(' Hit enter to go menu', 'printbl2')
     wait = input('')
 #------------------------------------------------------------------------------- Run
 def run():
@@ -191,15 +191,15 @@ def run():
     j_total = sum(vectors['j'])
     total = sqrt( (i_total**2) + (j_total**2) )
     txt.head('Run > Resualts :')
-    clp.printb2('Total Force vector: ')
+    ui.colored_print('Total Force vector: ', 'printb2')
     print(i_total,'i',sep='',end='')
-    clp.printb2(' + ')
+    ui.colored_print(' + ', 'printb2')
     print(j_total,'j',sep='')
-    clp.printb2('Total Electricity Field Intensity : ')
+    ui.colored_print('Total Electricity Field Intensity : ', 'printb2')
     print(total,end='')
-    clp.printb(' N\n')
-    clp.printr2('>> ')
-    clp.printbl2('Press any key to go menu')
+    ui.colored_print(' N\n', 'printb')
+    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('Press any key to go menu', 'printbl2')
     wait = input('')
 #------------------------------------------------------------------------------- help
 def help():
@@ -209,15 +209,15 @@ then set TestCharge's intensity and its position.
 at last hit the 'Run' to calculate imported data.
 also you can monitor current imported data by selecting item '5'.
     ''')
-    clp.printb('[Github]: github.com/ccxa\n')
-    clp.printr2('>> ')
-    clp.printbl2(('Hit enter to go menu'))
+    ui.colored_print('[Github]: github.com/ccxa\n', 'printb')
+    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('Hit enter to go menu', 'printbl2')
     wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
     txt.head('Show list > Current Data :')
-    clp.printr('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
-    .format('Charge','x','y','MC','Force'))
+    ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
+    .format('Charge','x','y','MC','Force'), 'printr')
     for charge in charges:
         name = charge
         x,y = charges[charge][1],charges[charge][2]
@@ -228,9 +228,9 @@ def showList():
             force = '---'
         print('| {0:^7s}|{1:^7d}|{2:^7d}|{3:^7d}|{4:^11}|'
         .format(name,x,y,intensity,force))
-    clp.printb('\n')
-    clp.printr2('>> ')
-    clp.printbl2('Press any key to go menu')
+    ui.colored_print('\n', 'printb')
+    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('Press any key to go menu', 'printbl2')
     wait = input('')
 #------------------------------------------------------------------------------- Reset
 def reset():
@@ -242,9 +242,9 @@ def reset():
         vectors['i'].clear()
         vectors['j'].clear()
         forces.clear()
-        clp.printr('All data has been reset to default values.')
-        clp.printr2('>> ')
-        clp.printbl2('Hit enter to go menu.')
+        ui.colored_print('All data has been reset to default values.', 'printr')
+        ui.colored_print('>> ', 'printr2')
+        ui.colored_print('Hit enter to go menu.', 'printbl2')
         wait = input('')
     else:
         return None
