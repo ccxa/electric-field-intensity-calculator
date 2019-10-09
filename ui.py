@@ -28,17 +28,16 @@ def colored_print(text, color):
         print("\033[5m{}\033[00m".format(text), end='')
 
 
-
-
-class txt():  # -------------------- repetitive messages class
+# repetitive messages class
+class txt():
 
     def head(map):
         os.system('clear')
-
         colored_print(map, 'printb')
         print(61*'-')
+
     def invInput(errorHint):
-        colored_print('-------------------------------', 'printr')
+        colored_print('-' * 31, 'printr')
         print(errorHint)
         colored_print('>>', 'printr2')
         colored_print(' Hit enter to try again', 'printbl2')
