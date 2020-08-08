@@ -1,32 +1,27 @@
 import os
 from math import sqrt, degrees, acos, cos, sin, radians
 import ui
+import functions
 
-# ui related functions
-#clp = ui.colorful_prints
 txt = ui.txt
 
-# Menu
-def menu():
-    number = [0,1,2,3,4,5,6,7]
-    item = ['Add','Remove','TestCharge','Run','Charges','Reset','Help','Exit']
-    ui.colored_print('1.Add    2.Remove    3.TestCharge ', 'printb')
-    ui.colored_print('4.Run    5.Charges   6.Reset      ', 'printb')
-    ui.colored_print('7.Help   8.Exit                   ', 'printb')
-#------------------------------------------------------------------------------- Dicts
+
+# Dicts
 charges = {}
-tcharge = [1,0,0] #test charges primary intensity , x , y
-vectors = {'i':[],'j':[]}
-forces = {} # a place to store each vectors forces
-#------------------------------------------------------------------------------- Add Charge
+tcharge = [1, 0, 0]  # test charges primary intensity , x , y
+vectors = {'i': [], 'j': []}
+forces = {}  # a place to store each vectors forces
+# Add Charge
+
+
 def addCharge():
 
-    nameState = False #------------------------------ set name
+    nameState = False  # set name
     while nameState == False:
         txt.head('Set name :')
-        print('Assign a number to q charge, input other than number = ',end='')
+        print('Assign a number to q charge, input other than number = ', end='')
         ui.colored_print('cancel', 'printr')
-        try :
+        try:
             number = int(input('>> q'))
             name = 'q'+str(number)
             if name in charges:
@@ -37,7 +32,7 @@ def addCharge():
         except ValueError:
             return None
 
-    intensityState = False #------------------------------ intensity
+    intensityState = False  # intensity
     while intensityState == False:
         txt.head('Setting name > Intensity :')
         print('set intensity, it can be + / - :')
@@ -251,7 +246,7 @@ def reset():
 #------------------------------------------------------------------------------- Execute
 while True:
     os.system('clear')
-    menu()
+    functions.menu(ui)
     cmd = input(">> ")
     if cmd == "1":
         addCharge()
