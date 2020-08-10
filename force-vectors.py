@@ -55,10 +55,10 @@ def addCharge():
 
     #------------------------------ success message
     txt.head('Setting name > Intensity > Position > Done!')
-    ui.colored_print('added successfully: ', 'printb2')
+    ui.colored_print('added successfully: ', 'blue2')
     print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
     ui.colored_print('>>', 'printr2')
-    ui.colored_print(' Hit enter to go menu', 'printbl2')
+    ui.colored_print(' Hit enter to go menu', 'blinking')
     wait = input('')
     #------------------------------ put info to charges
     charges[name] = [intensity,x,y]
@@ -79,9 +79,9 @@ def remCharge():
                 del charges[name]
                 txt.head('Input name > Done!')
                 print(name,end='')
-                ui.colored_print(' removed from memory.\n', 'printb')
+                ui.colored_print(' removed from memory.\n', 'blue')
                 ui.colored_print('>>', 'printr2')
-                ui.colored_print(' Hit enter to open menu', 'printbl2')
+                ui.colored_print(' Hit enter to open menu', 'blinking')
                 wait = input('')
                 removeState = True
         except ValueError:
@@ -90,7 +90,7 @@ def remCharge():
 #------------------------------------------------------------------------------- Test Charge
 def testCharge():
     txt.head('Test charge options :')
-    ui.colored_print('Current values -> ', 'printb2')
+    ui.colored_print('Current values -> ', 'blue2')
     print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
     ui.colored_print('>>', 'printr2')
     answer = input(' 1.Change-it  2.Go-back [1/2]: ')
@@ -137,7 +137,7 @@ def testCharge():
     txt.head('Test charge options > Reseting values :')
     print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
     ui.colored_print('>>', 'printr2')
-    ui.colored_print(' Hit enter to go menu', 'printbl2')
+    ui.colored_print(' Hit enter to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- Run
 def run():
@@ -186,15 +186,15 @@ def run():
     j_total = sum(vectors['j'])
     total = sqrt( (i_total**2) + (j_total**2) )
     txt.head('Run > Resualts :')
-    ui.colored_print('Total Force vector: ', 'printb2')
+    ui.colored_print('Total Force vector: ', 'blue2')
     print(i_total,'i',sep='',end='')
-    ui.colored_print(' + ', 'printb2')
+    ui.colored_print(' + ', 'blue2')
     print(j_total,'j',sep='')
-    ui.colored_print('Total Electricity Field Intensity : ', 'printb2')
+    ui.colored_print('Total Electricity Field Intensity : ', 'blue2')
     print(total,end='')
-    ui.colored_print(' N\n', 'printb')
+    ui.colored_print(' N\n', 'blue')
     ui.colored_print('>> ', 'printr2')
-    ui.colored_print('Press any key to go menu', 'printbl2')
+    ui.colored_print('Press any key to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- help
 def help():
@@ -204,9 +204,9 @@ then set TestCharge's intensity and its position.
 at last hit the 'Run' to calculate imported data.
 also you can monitor current imported data by selecting item '5'.
     ''')
-    ui.colored_print('[Github]: github.com/ccxa\n', 'printb')
+    ui.colored_print('[Github]: github.com/ccxa\n', 'blue')
     ui.colored_print('>> ', 'printr2')
-    ui.colored_print('Hit enter to go menu', 'printbl2')
+    ui.colored_print('Hit enter to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
@@ -223,9 +223,9 @@ def showList():
             force = '---'
         print('| {0:^7s}|{1:^7d}|{2:^7d}|{3:^7d}|{4:^11}|'
         .format(name,x,y,intensity,force))
-    ui.colored_print('\n', 'printb')
+    ui.colored_print('\n', 'blue')
     ui.colored_print('>> ', 'printr2')
-    ui.colored_print('Press any key to go menu', 'printbl2')
+    ui.colored_print('Press any key to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- Reset
 def reset():
@@ -239,7 +239,7 @@ def reset():
         forces.clear()
         ui.colored_print('All data has been reset to default values.', 'printr')
         ui.colored_print('>> ', 'printr2')
-        ui.colored_print('Hit enter to go menu.', 'printbl2')
+        ui.colored_print('Hit enter to go menu.', 'blinking')
         wait = input('')
     else:
         return None
