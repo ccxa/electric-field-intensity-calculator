@@ -14,9 +14,9 @@ def colored_print(text, color):
         print("\033[5m{}\033[00m".format(text), end='')
 
 
-def head(map):
+def header(header_text):
     os.system('clear')
-    colored_print(map, 'blue')
+    colored_print(header_text, 'blue')
     print(61*'-')
 
 

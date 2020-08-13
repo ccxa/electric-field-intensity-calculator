@@ -15,7 +15,7 @@ def addCharge():
 
     nameState = False  # set name
     while nameState == False:
-        ui.head('Set name :')
+        ui.header('Set name :')
         print('Assign a number to q charge, input other than number = ', end='')
         ui.colored_print('cancel', 'red')
         try:
@@ -31,7 +31,7 @@ def addCharge():
 
     intensityState = False  # intensity
     while intensityState == False:
-        ui.head('Setting name > Intensity :')
+        ui.header('Setting name > Intensity :')
         print('set intensity, it can be + / - :')
         try:
             intensity = int(input('>> q(MC): '))
@@ -41,7 +41,7 @@ def addCharge():
 
     positionState = False #------------------------------ position
     while positionState == False:
-        ui.head('Setting name > Intensity > Position :')
+        ui.header('Setting name > Intensity > Position :')
         print('Define its position in (x,y) format, Scale is CM')
         try:
             x = int(input('x = '))
@@ -51,7 +51,7 @@ def addCharge():
             ui.invInput('Input integer only.')
 
     #------------------------------ success message
-    ui.head('Setting name > Intensity > Position > Done!')
+    ui.header('Setting name > Intensity > Position > Done!')
     ui.colored_print('added successfully: ', 'blue2')
     print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
     ui.colored_print('>>', 'red2')
@@ -64,7 +64,7 @@ def remCharge():
 
     removeState = False
     while removeState == False:
-        ui.head('Input name :')
+        ui.header('Input name :')
         print('Input charge name to remove, input other than number = ',end='')
         ui.colored_print('cancel', 'red')
         try:
@@ -74,7 +74,7 @@ def remCharge():
                 ui.invInput('This charge dos not exist')
             else:
                 del charges[name]
-                ui.head('Input name > Done!')
+                ui.header('Input name > Done!')
                 print(name,end='')
                 ui.colored_print(' removed from memory.\n', 'blue')
                 ui.colored_print('>>', 'red2')
@@ -86,19 +86,19 @@ def remCharge():
     vectors['i'],vectors['j']=[],[]
 #------------------------------------------------------------------------------- Test Charge
 def testCharge():
-    ui.head('Test charge options :')
+    ui.header('Test charge options :')
     ui.colored_print('Current values -> ', 'blue2')
     print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
     ui.colored_print('>>', 'red2')
     answer = input(' 1.Change-it  2.Go-back [1/2]: ')
     if answer =='1':
-        ui.head('Test charge options > Reseting values :')
+        ui.header('Test charge options > Reseting values :')
         ui.colored_print('Defaults: ', 'red2')
         print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
 
         intensityState = False #------------------------------ intensity
         while intensityState == False:
-            ui.head('Test charge options > Reseting values :')
+            ui.header('Test charge options > Reseting values :')
             ui.colored_print('Defaults: ', 'red2')
             print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
             try:
@@ -114,7 +114,7 @@ def testCharge():
 
     positionState = False #------------------------------ position
     while positionState == False:
-        ui.head('Test charge options > Reseting values :')
+        ui.header('Test charge options > Reseting values :')
         ui.colored_print('Defaults: ', 'red2')
         print('intensity: 1MC    x,y: 0,0    distanse scale: CM\n')
         try:
@@ -131,7 +131,7 @@ def testCharge():
     tcharge[2] = y
 
     #------------------------------ success message
-    ui.head('Test charge options > Reseting values :')
+    ui.header('Test charge options > Reseting values :')
     print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
     ui.colored_print('>>', 'red2')
     ui.colored_print(' Hit enter to go menu', 'blinking')
@@ -182,7 +182,7 @@ def run():
     i_total = sum(vectors['i'])
     j_total = sum(vectors['j'])
     total = sqrt( (i_total**2) + (j_total**2) )
-    ui.head('Run > Resualts :')
+    ui.header('Run > Resualts :')
     ui.colored_print('Total Force vector: ', 'blue2')
     print(i_total,'i',sep='',end='')
     ui.colored_print(' + ', 'blue2')
@@ -195,7 +195,7 @@ def run():
     wait = input('')
 #------------------------------------------------------------------------------- help
 def help():
-    ui.head('Help :')
+    ui.header('Help :')
     print('''First import your charges with them details.
 then set TestCharge's intensity and its position.
 at last hit the 'Run' to calculate imported data.
@@ -207,7 +207,7 @@ also you can monitor current imported data by selecting item '5'.
     wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
-    ui.head('Show list > Current Data :')
+    ui.header('Show list > Current Data :')
     ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
     .format('Charge','x','y','MC','Force'), 'red')
     for charge in charges:
@@ -226,7 +226,7 @@ def showList():
     wait = input('')
 #------------------------------------------------------------------------------- Reset
 def reset():
-    ui.head('Reset :')
+    ui.header('Reset :')
     answer = input('Erase all imported data from memory? [y/n]\n>> ')
     if answer in ['y','Y']:
         charges.clear()
