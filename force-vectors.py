@@ -20,7 +20,7 @@ def addCharge():
     while nameState == False:
         txt.head('Set name :')
         print('Assign a number to q charge, input other than number = ', end='')
-        ui.colored_print('cancel', 'printr')
+        ui.colored_print('cancel', 'red')
         try:
             number = int(input('>> q'))
             name = 'q'+str(number)
@@ -57,7 +57,7 @@ def addCharge():
     txt.head('Setting name > Intensity > Position > Done!')
     ui.colored_print('added successfully: ', 'blue2')
     print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
-    ui.colored_print('>>', 'printr2')
+    ui.colored_print('>>', 'red2')
     ui.colored_print(' Hit enter to go menu', 'blinking')
     wait = input('')
     #------------------------------ put info to charges
@@ -69,7 +69,7 @@ def remCharge():
     while removeState == False:
         txt.head('Input name :')
         print('Input charge name to remove, input other than number = ',end='')
-        ui.colored_print('cancel', 'printr')
+        ui.colored_print('cancel', 'red')
         try:
             number = int(input('>> q'))
             name = 'q'+str(number)
@@ -80,7 +80,7 @@ def remCharge():
                 txt.head('Input name > Done!')
                 print(name,end='')
                 ui.colored_print(' removed from memory.\n', 'blue')
-                ui.colored_print('>>', 'printr2')
+                ui.colored_print('>>', 'red2')
                 ui.colored_print(' Hit enter to open menu', 'blinking')
                 wait = input('')
                 removeState = True
@@ -92,17 +92,17 @@ def testCharge():
     txt.head('Test charge options :')
     ui.colored_print('Current values -> ', 'blue2')
     print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
-    ui.colored_print('>>', 'printr2')
+    ui.colored_print('>>', 'red2')
     answer = input(' 1.Change-it  2.Go-back [1/2]: ')
     if answer =='1':
         txt.head('Test charge options > Reseting values :')
-        ui.colored_print('Defaults: ', 'printr2')
+        ui.colored_print('Defaults: ', 'red2')
         print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
 
         intensityState = False #------------------------------ intensity
         while intensityState == False:
             txt.head('Test charge options > Reseting values :')
-            ui.colored_print('Defaults: ', 'printr2')
+            ui.colored_print('Defaults: ', 'red2')
             print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
             try:
                 intensity = int(input('Intensity, can be + / - :\n>> q(MC): '))
@@ -118,7 +118,7 @@ def testCharge():
     positionState = False #------------------------------ position
     while positionState == False:
         txt.head('Test charge options > Reseting values :')
-        ui.colored_print('Defaults: ', 'printr2')
+        ui.colored_print('Defaults: ', 'red2')
         print('intensity: 1MC    x,y: 0,0    distanse scale: CM\n')
         try:
             print('Now set its position(C.Meter).')
@@ -136,7 +136,7 @@ def testCharge():
     #------------------------------ success message
     txt.head('Test charge options > Reseting values :')
     print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
-    ui.colored_print('>>', 'printr2')
+    ui.colored_print('>>', 'red2')
     ui.colored_print(' Hit enter to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- Run
@@ -193,7 +193,7 @@ def run():
     ui.colored_print('Total Electricity Field Intensity : ', 'blue2')
     print(total,end='')
     ui.colored_print(' N\n', 'blue')
-    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('>> ', 'red2')
     ui.colored_print('Press any key to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- help
@@ -205,14 +205,14 @@ at last hit the 'Run' to calculate imported data.
 also you can monitor current imported data by selecting item '5'.
     ''')
     ui.colored_print('[Github]: github.com/ccxa\n', 'blue')
-    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('>> ', 'red2')
     ui.colored_print('Hit enter to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
     txt.head('Show list > Current Data :')
     ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
-    .format('Charge','x','y','MC','Force'), 'printr')
+    .format('Charge','x','y','MC','Force'), 'red')
     for charge in charges:
         name = charge
         x,y = charges[charge][1],charges[charge][2]
@@ -224,7 +224,7 @@ def showList():
         print('| {0:^7s}|{1:^7d}|{2:^7d}|{3:^7d}|{4:^11}|'
         .format(name,x,y,intensity,force))
     ui.colored_print('\n', 'blue')
-    ui.colored_print('>> ', 'printr2')
+    ui.colored_print('>> ', 'red2')
     ui.colored_print('Press any key to go menu', 'blinking')
     wait = input('')
 #------------------------------------------------------------------------------- Reset
@@ -237,8 +237,8 @@ def reset():
         vectors['i'].clear()
         vectors['j'].clear()
         forces.clear()
-        ui.colored_print('All data has been reset to default values.', 'printr')
-        ui.colored_print('>> ', 'printr2')
+        ui.colored_print('All data has been reset to default values.', 'red')
+        ui.colored_print('>> ', 'red2')
         ui.colored_print('Hit enter to go menu.', 'blinking')
         wait = input('')
     else:
