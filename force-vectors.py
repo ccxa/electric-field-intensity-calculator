@@ -3,9 +3,6 @@ from math import sqrt, degrees, acos, cos, sin, radians
 import ui
 import functions
 
-txt = ui.txt
-
-
 # Dicts
 charges = {}
 tcharge = [1, 0, 0]  # test charges primary intensity , x , y
@@ -18,7 +15,7 @@ def addCharge():
 
     nameState = False  # set name
     while nameState == False:
-        txt.head('Set name :')
+        ui.head('Set name :')
         print('Assign a number to q charge, input other than number = ', end='')
         ui.colored_print('cancel', 'red')
         try:
@@ -26,7 +23,7 @@ def addCharge():
             name = 'q'+str(number)
             if name in charges:
                 errorHint = name + ' charge name already exist!'
-                txt.invInput(errorHint)
+                ui.invInput(errorHint)
             else:
                 nameState = True
         except ValueError:
@@ -34,27 +31,27 @@ def addCharge():
 
     intensityState = False  # intensity
     while intensityState == False:
-        txt.head('Setting name > Intensity :')
+        ui.head('Setting name > Intensity :')
         print('set intensity, it can be + / - :')
         try:
             intensity = int(input('>> q(MC): '))
             intensityState = True
         except ValueError:
-            txt.invInput('Input integer only')
+            ui.invInput('Input integer only')
 
     positionState = False #------------------------------ position
     while positionState == False:
-        txt.head('Setting name > Intensity > Position :')
+        ui.head('Setting name > Intensity > Position :')
         print('Define its position in (x,y) format, Scale is CM')
         try:
             x = int(input('x = '))
             y = int(input('y = '))
             positionState = True
         except ValueError:
-            txt.invInput('Input integer only.')
+            ui.invInput('Input integer only.')
 
     #------------------------------ success message
-    txt.head('Setting name > Intensity > Position > Done!')
+    ui.head('Setting name > Intensity > Position > Done!')
     ui.colored_print('added successfully: ', 'blue2')
     print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
     ui.colored_print('>>', 'red2')
@@ -67,17 +64,17 @@ def remCharge():
 
     removeState = False
     while removeState == False:
-        txt.head('Input name :')
+        ui.head('Input name :')
         print('Input charge name to remove, input other than number = ',end='')
         ui.colored_print('cancel', 'red')
         try:
             number = int(input('>> q'))
             name = 'q'+str(number)
             if name not in charges:
-                txt.invInput('This charge dos not exist')
+                ui.invInput('This charge dos not exist')
             else:
                 del charges[name]
-                txt.head('Input name > Done!')
+                ui.head('Input name > Done!')
                 print(name,end='')
                 ui.colored_print(' removed from memory.\n', 'blue')
                 ui.colored_print('>>', 'red2')
@@ -89,35 +86,35 @@ def remCharge():
     vectors['i'],vectors['j']=[],[]
 #------------------------------------------------------------------------------- Test Charge
 def testCharge():
-    txt.head('Test charge options :')
+    ui.head('Test charge options :')
     ui.colored_print('Current values -> ', 'blue2')
     print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
     ui.colored_print('>>', 'red2')
     answer = input(' 1.Change-it  2.Go-back [1/2]: ')
     if answer =='1':
-        txt.head('Test charge options > Reseting values :')
+        ui.head('Test charge options > Reseting values :')
         ui.colored_print('Defaults: ', 'red2')
         print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
 
         intensityState = False #------------------------------ intensity
         while intensityState == False:
-            txt.head('Test charge options > Reseting values :')
+            ui.head('Test charge options > Reseting values :')
             ui.colored_print('Defaults: ', 'red2')
             print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
             try:
                 intensity = int(input('Intensity, can be + / - :\n>> q(MC): '))
                 if intensity ==0:
-                    txt.invInput('It cant be: 0')
+                    ui.invInput('It cant be: 0')
                 else:
                     intensityState = True
             except ValueError:
-                txt.invInput('Input integer only')
+                ui.invInput('Input integer only')
     else:
         return None
 
     positionState = False #------------------------------ position
     while positionState == False:
-        txt.head('Test charge options > Reseting values :')
+        ui.head('Test charge options > Reseting values :')
         ui.colored_print('Defaults: ', 'red2')
         print('intensity: 1MC    x,y: 0,0    distanse scale: CM\n')
         try:
@@ -126,7 +123,7 @@ def testCharge():
             y = int(input('y: '))
             positionState = True
         except ValueError:
-            txt.invInput('Input integer only')
+            ui.invInput('Input integer only')
 
     #------------------------------ save data to tCharge list
     tcharge[0] = intensity
@@ -134,7 +131,7 @@ def testCharge():
     tcharge[2] = y
 
     #------------------------------ success message
-    txt.head('Test charge options > Reseting values :')
+    ui.head('Test charge options > Reseting values :')
     print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
     ui.colored_print('>>', 'red2')
     ui.colored_print(' Hit enter to go menu', 'blinking')
@@ -185,7 +182,7 @@ def run():
     i_total = sum(vectors['i'])
     j_total = sum(vectors['j'])
     total = sqrt( (i_total**2) + (j_total**2) )
-    txt.head('Run > Resualts :')
+    ui.head('Run > Resualts :')
     ui.colored_print('Total Force vector: ', 'blue2')
     print(i_total,'i',sep='',end='')
     ui.colored_print(' + ', 'blue2')
@@ -198,7 +195,7 @@ def run():
     wait = input('')
 #------------------------------------------------------------------------------- help
 def help():
-    txt.head('Help :')
+    ui.head('Help :')
     print('''First import your charges with them details.
 then set TestCharge's intensity and its position.
 at last hit the 'Run' to calculate imported data.
@@ -210,7 +207,7 @@ also you can monitor current imported data by selecting item '5'.
     wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
-    txt.head('Show list > Current Data :')
+    ui.head('Show list > Current Data :')
     ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
     .format('Charge','x','y','MC','Force'), 'red')
     for charge in charges:
@@ -229,7 +226,7 @@ def showList():
     wait = input('')
 #------------------------------------------------------------------------------- Reset
 def reset():
-    txt.head('Reset :')
+    ui.head('Reset :')
     answer = input('Erase all imported data from memory? [y/n]\n>> ')
     if answer in ['y','Y']:
         charges.clear()
