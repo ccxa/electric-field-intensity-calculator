@@ -23,7 +23,7 @@ def addCharge():
             name = 'q'+str(number)
             if name in charges:
                 errorHint = name + ' charge name already exist!'
-                ui.invInput(errorHint)
+                ui.invalid_input(errorHint)
             else:
                 nameState = True
         except ValueError:
@@ -37,7 +37,7 @@ def addCharge():
             intensity = int(input('>> q(MC): '))
             intensityState = True
         except ValueError:
-            ui.invInput('Input integer only')
+            ui.invalid_input('Input integer only')
 
     positionState = False #------------------------------ position
     while positionState == False:
@@ -48,7 +48,7 @@ def addCharge():
             y = int(input('y = '))
             positionState = True
         except ValueError:
-            ui.invInput('Input integer only.')
+            ui.invalid_input('Input integer only.')
 
     #------------------------------ success message
     ui.header('Setting name > Intensity > Position > Done!')
@@ -71,7 +71,7 @@ def remCharge():
             number = int(input('>> q'))
             name = 'q'+str(number)
             if name not in charges:
-                ui.invInput('This charge dos not exist')
+                ui.invalid_input('This charge dos not exist')
             else:
                 del charges[name]
                 ui.header('Input name > Done!')
@@ -104,11 +104,11 @@ def testCharge():
             try:
                 intensity = int(input('Intensity, can be + / - :\n>> q(MC): '))
                 if intensity ==0:
-                    ui.invInput('It cant be: 0')
+                    ui.invalid_input('It cant be: 0')
                 else:
                     intensityState = True
             except ValueError:
-                ui.invInput('Input integer only')
+                ui.invalid_input('Input integer only')
     else:
         return None
 
@@ -123,7 +123,7 @@ def testCharge():
             y = int(input('y: '))
             positionState = True
         except ValueError:
-            ui.invInput('Input integer only')
+            ui.invalid_input('Input integer only')
 
     #------------------------------ save data to tCharge list
     tcharge[0] = intensity

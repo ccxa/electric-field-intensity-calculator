@@ -20,11 +20,10 @@ def header(header_text):
     print(61*'-')
 
 
-def invInput(errorHint):
+def invalid_input(error_hint):
     colored_print('-' * 31, 'red')
-    print(errorHint)
+    print(error_hint)
     colored_print('>>', 'red2')
     colored_print(' Hit enter to try again', 'blinking')
-    wait = input('')
-
-
+    # simple way of waiting for user to press enter button
+    input('')
