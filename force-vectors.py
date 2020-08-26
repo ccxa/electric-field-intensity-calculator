@@ -11,54 +11,7 @@ forces = {}  # a place to store each vectors forces
 # Add Charge
 
 
-def addCharge():
 
-    nameState = False  # set name
-    while nameState == False:
-        ui.header('Set name :')
-        print('Assign a number to q charge, input other than number = ', end='')
-        ui.colored_print('cancel', 'red')
-        try:
-            number = int(input('>> q'))
-            name = 'q'+str(number)
-            if name in charges:
-                errorHint = name + ' charge name already exist!'
-                ui.invalid_input(errorHint)
-            else:
-                nameState = True
-        except ValueError:
-            return None
-
-    intensityState = False  # intensity
-    while intensityState == False:
-        ui.header('Setting name > Intensity :')
-        print('set intensity, it can be + / - :')
-        try:
-            intensity = int(input('>> q(MC): '))
-            intensityState = True
-        except ValueError:
-            ui.invalid_input('Input integer only')
-
-    positionState = False #------------------------------ position
-    while positionState == False:
-        ui.header('Setting name > Intensity > Position :')
-        print('Define its position in (x,y) format, Scale is CM')
-        try:
-            x = int(input('x = '))
-            y = int(input('y = '))
-            positionState = True
-        except ValueError:
-            ui.invalid_input('Input integer only.')
-
-    #------------------------------ success message
-    ui.header('Setting name > Intensity > Position > Done!')
-    ui.colored_print('added successfully: ', 'blue2')
-    print(name,'(',x,',',y,')= ',intensity,' Coulomb\n',sep='')
-    ui.colored_print('>>', 'red2')
-    ui.colored_print(' Hit enter to go menu', 'blinking')
-    wait = input('')
-    #------------------------------ put info to charges
-    charges[name] = [intensity,x,y]
 #------------------------------------------------------------------------------- Rem Charge
 def remCharge():
 
@@ -246,7 +199,7 @@ while True:
     functions.menu(ui)
     cmd = input(">> ")
     if cmd == "1":
-        addCharge()
+        functions.add_charge(ui, charges)
     elif cmd == "2":
         remCharge()
     elif cmd == "3":
