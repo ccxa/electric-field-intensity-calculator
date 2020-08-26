@@ -50,15 +50,13 @@ def add_charge(ui, charges):
         except ValueError:
             ui.invalid_input('Input integer only.')
 
-    if position_state and name_state:
-        # success message
-        ui.header('Setting name > Intensity > Position > Done!')
-        ui.colored_print('added successfully: ', 'blue2')
-        print(name, '(', x, ',', y, ')= ', intensity, ' Coulomb\n', sep='')
-        ui.colored_print('>>', 'red2')
-        ui.colored_print(' Hit enter to go menu', 'blinking')
+    # success message
+    ui.header('Setting name > Intensity > Position > Done!')
+    ui.colored_print('added successfully: ', 'blue2')
+    print(name, '(', x, ',', y, ')= ', intensity, ' Coulomb\n', sep='')
+    ui.colored_print('>>', 'red2')
+    ui.colored_print(' Hit enter to go menu', 'blinking')
 
     input('')
-
     # put info to charges
     charges[name] = [intensity, x, y]
