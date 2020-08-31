@@ -11,32 +11,6 @@ forces = {}  # a place to store each vectors forces
 # Add Charge
 
 
-
-#------------------------------------------------------------------------------- Rem Charge
-def remCharge():
-
-    removeState = False
-    while removeState == False:
-        ui.header('Input name :')
-        print('Input charge name to remove, input other than number = ',end='')
-        ui.colored_print('cancel', 'red')
-        try:
-            number = int(input('>> q'))
-            name = 'q'+str(number)
-            if name not in charges:
-                ui.invalid_input('This charge dos not exist')
-            else:
-                del charges[name]
-                ui.header('Input name > Done!')
-                print(name,end='')
-                ui.colored_print(' removed from memory.\n', 'blue')
-                ui.colored_print('>>', 'red2')
-                ui.colored_print(' Hit enter to open menu', 'blinking')
-                wait = input('')
-                removeState = True
-        except ValueError:
-            return None
-    vectors['i'],vectors['j']=[],[]
 #------------------------------------------------------------------------------- Test Charge
 def testCharge():
     ui.header('Test charge options :')
@@ -201,7 +175,7 @@ while True:
     if cmd == "1":
         functions.add_charge(ui, charges)
     elif cmd == "2":
-        remCharge()
+        functions.remove_charge(ui, charges, vectors)
     elif cmd == "3":
         testCharge()
     elif cmd == "4":

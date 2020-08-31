@@ -60,3 +60,29 @@ def add_charge(ui, charges):
     input('')
     # put info to charges
     charges[name] = [intensity, x, y]
+
+
+def remove_charge(ui, charges, vectors):
+
+    removeState = False
+    while removeState == False:
+        ui.header('Input name :')
+        print('Input charge name to remove, input other than number = ',end='')
+        ui.colored_print('cancel', 'red')
+        try:
+            number = int(input('>> q'))
+            name = 'q'+str(number)
+            if name not in charges:
+                ui.invalid_input('This charge dos not exist')
+            else:
+                del charges[name]
+                ui.header('Input name > Done!')
+                print(name,end='')
+                ui.colored_print(' removed from memory.\n', 'blue')
+                ui.colored_print('>>', 'red2')
+                ui.colored_print(' Hit enter to open menu', 'blinking')
+                wait = input('')
+                removeState = True
+        except ValueError:
+            return None
+    vectors['i'],vectors['j']=[],[]
