@@ -5,64 +5,13 @@ import functions
 
 # Dicts
 charges = {}
-tcharge = [1, 0, 0]  # test charges primary intensity , x , y
+test_charge = [1, 0, 0]  # test charges primary intensity , x , y
 vectors = {'i': [], 'j': []}
 forces = {}  # a place to store each vectors forces
 # Add Charge
 
 
-#------------------------------------------------------------------------------- Test Charge
-def testCharge():
-    ui.header('Test charge options :')
-    ui.colored_print('Current values -> ', 'blue2')
-    print('Tq(',tcharge[1],',',tcharge[2],')= ',tcharge[0],'MC\n',sep='')
-    ui.colored_print('>>', 'red2')
-    answer = input(' 1.Change-it  2.Go-back [1/2]: ')
-    if answer =='1':
-        ui.header('Test charge options > Reseting values :')
-        ui.colored_print('Defaults: ', 'red2')
-        print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
 
-        intensityState = False #------------------------------ intensity
-        while intensityState == False:
-            ui.header('Test charge options > Reseting values :')
-            ui.colored_print('Defaults: ', 'red2')
-            print('intensity: +1MC    x,y: 0,0    distanse scale: CM\n')
-            try:
-                intensity = int(input('Intensity, can be + / - :\n>> q(MC): '))
-                if intensity ==0:
-                    ui.invalid_input('It cant be: 0')
-                else:
-                    intensityState = True
-            except ValueError:
-                ui.invalid_input('Input integer only')
-    else:
-        return None
-
-    positionState = False #------------------------------ position
-    while positionState == False:
-        ui.header('Test charge options > Reseting values :')
-        ui.colored_print('Defaults: ', 'red2')
-        print('intensity: 1MC    x,y: 0,0    distanse scale: CM\n')
-        try:
-            print('Now set its position(C.Meter).')
-            x = int(input('x: '))
-            y = int(input('y: '))
-            positionState = True
-        except ValueError:
-            ui.invalid_input('Input integer only')
-
-    #------------------------------ save data to tCharge list
-    tcharge[0] = intensity
-    tcharge[1] = x
-    tcharge[2] = y
-
-    #------------------------------ success message
-    ui.header('Test charge options > Reseting values :')
-    print('Old data replaced with Tq','(',x,',',y,')= ',intensity,'\n',sep='')
-    ui.colored_print('>>', 'red2')
-    ui.colored_print(' Hit enter to go menu', 'blinking')
-    wait = input('')
 #------------------------------------------------------------------------------- Run
 def run():
                                     #--------- free memory to calculation
@@ -177,7 +126,7 @@ while True:
     elif cmd == "2":
         functions.remove_charge(ui, charges, vectors)
     elif cmd == "3":
-        testCharge()
+        functions.test_charge(ui, test_charge)
     elif cmd == "4":
         run()
     elif cmd == "5":
