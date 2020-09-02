@@ -64,11 +64,12 @@ def add_charge(ui, charges):
 
 def remove_charge(ui, charges, vectors):
 
-    removeState = False
-    while removeState == False:
+    remove_state = False
+    while not remove_state:
         ui.header('Input name :')
-        print('Input charge name to remove, input other than number = ',end='')
+        print('Input charges number to remove it, (integer only)  = ', end='')
         ui.colored_print('cancel', 'red')
+
         try:
             number = int(input('>> q'))
             name = 'q'+str(number)
@@ -77,12 +78,13 @@ def remove_charge(ui, charges, vectors):
             else:
                 del charges[name]
                 ui.header('Input name > Done!')
-                print(name,end='')
+                print(name, end='')
                 ui.colored_print(' removed from memory.\n', 'blue')
                 ui.colored_print('>>', 'red2')
                 ui.colored_print(' Hit enter to open menu', 'blinking')
-                wait = input('')
-                removeState = True
+                input('')
+                remove_state = True
         except ValueError:
             return None
-    vectors['i'],vectors['j']=[],[]
+
+    vectors['i'], vectors['j'] = [], []
