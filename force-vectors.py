@@ -21,7 +21,7 @@ def run():
     for charge in charges.keys():
 
         x,y = charges[charge][1],charges[charge][2] # (x,y) of charge
-        q,tc = charges[charge][0],tcharge[0] # charge & testCharge
+        q,tc = charges[charge][0],test_charge[0] # charge & testCharge
 
                                     #----------------------- calculate Force
         q = q * 0.000001
@@ -106,7 +106,7 @@ def reset():
     answer = input('Erase all imported data from memory? [y/n]\n>> ')
     if answer in ['y','Y']:
         charges.clear()
-        tcharge[0],tcharge[1],tcharge[2] = 1,0,0
+        test_charge[0],test_charge[1],test_charge[2] = 1,0,0
         vectors['i'].clear()
         vectors['j'].clear()
         forces.clear()
