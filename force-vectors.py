@@ -70,7 +70,7 @@ while True:
     elif cmd == "3":
         functions.test_charge(ui, test_charge)
     elif cmd == "4":
-        functions.run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui)
+        functions.run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, test_charge)
     elif cmd == "5":
         showList()
     elif cmd == "6":

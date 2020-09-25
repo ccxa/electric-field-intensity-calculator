@@ -153,7 +153,7 @@ def test_charge(ui, t_charge):
 
 
 # Run
-def run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui):
+def run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, _test_charge):
                                     #--------- free memory to calculation
     vectors['i'],vectors['j'] = [],[]
     forces.clear()
@@ -162,7 +162,7 @@ def run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui):
 
         x,y = charges[charge][1],charges[charge][2] # (x,y) of charge
         q = charges[charge][0]
-        tc = test_charge[0] # charge & testCharge
+        tc = _test_charge[0] # charge & testCharge
 
                                     #----------------------- calculate Force
         q = q * 0.000001
