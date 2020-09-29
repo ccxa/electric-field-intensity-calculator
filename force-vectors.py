@@ -64,7 +64,7 @@ while True:
     elif cmd == "6":
         reset()
     elif cmd == "7":
-       functions.help(ui)
+       functions.help_message(ui)
     elif cmd == "8":
         os.system('clear')
         exit()
