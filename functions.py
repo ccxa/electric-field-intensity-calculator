@@ -153,7 +153,9 @@ def test_charge(ui, t_charge):
 
 
 # Run
-def run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, _test_charge):
+def run(vectors, forces, charges, sqrt, degrees,
+        a_cos, cos, sin, radians, ui, _test_charge
+        ):
 
     # free memory to calculation
     vectors['i'], vectors['j'] = [], []
@@ -168,46 +170,51 @@ def run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, _t
         # calculate Force
         q = q * 0.000001
         tc = tc * 0.000001
-        distance = (sqrt((x**2) + (y**2))) * 0.01  # between q & tc
-        k = (9 * (10**9)) # constant value in physics formula
-        force = (round((k * ( q * tc )) / (distance ** 2))) * 0.1
-                                    #------------ (i,j) of this force vector
-        if (q < 0 and tc < 0) or (q > 0 and tc > 0) :
-            i,j = -x,-y
+        # between q & tc
+        distance = (sqrt((x**2) + (y**2))) * 0.01
+        # constant value in physics formula
+        k = (9 * (10**9))
+        force = (round((k * (q * tc)) / (distance ** 2))) * 0.1
+        # (i,j) of this force vector
+
+        if (q < 0 and tc < 0) or (q > 0 and tc > 0):
+            i, j = -x, -y
         else:
-            i,j = x,y
-                                    #------------------- degree force vector
-        degree =  (( (i*5)+(j*0) ) / (distance * 5) ) / 100
-        degree = round(degrees(acos(degree)))
+            i, j = x, y
+
+        # degree force vector
+        degree = (((i*5)+(j*0)) / (distance * 5)) / 100
+        degree = round(degrees(a_cos(degree)))
         if 180 > degree > 90:
             degree = 180 - degree
         elif degree == 180:
             degree = 0
-                                    #------------------------ F >>> Fy & Fx
+
+        # F >> Fy & Fx
         if degree == 0:
-            fx,fy = force * (i/abs(i)),0
+            fx, fy = force * (i/abs(i)), 0
 
         elif degree == 90:
-            fy,fx = force * (j/abs(j)),0
+            fy, fx = force * (j/abs(j)), 0
         else:
             fx = force * cos(radians(degree)) * (i/abs(i))
             fy = force * sin(radians(degree)) * (j/abs(j))
-                                    #------------------------- save to dict
-        vectors['i'].append((fx))
-        vectors['j'].append((fy))
+        # save to dict
+        vectors['i'].append(fx)
+        vectors['j'].append(fy)
         forces[charge] = force
-                                    #---- final calculate and show resualts
+    # final calculate and show results
     i_total = sum(vectors['i'])
     j_total = sum(vectors['j'])
-    total = sqrt( (i_total**2) + (j_total**2) )
+    total = sqrt((i_total**2) + (j_total**2))
     ui.header('Run > Results :')
     ui.colored_print('Total Force vector: ', 'blue2')
-    print(i_total,'i',sep='',end='')
+    print(i_total, 'i', sep='', end='')
     ui.colored_print(' + ', 'blue2')
-    print(j_total,'j',sep='')
+    print(j_total, 'j', sep='')
     ui.colored_print('Total Electricity Field Intensity : ', 'blue2')
-    print(total,end='')
+    print(total, end='')
     ui.colored_print(' N\n', 'blue')
     ui.colored_print('>> ', 'red2')
     ui.colored_print('Press any key to go menu', 'blinking')
-    wait = input('')
+    input('')
