@@ -152,7 +152,6 @@ def test_charge(ui, t_charge):
     input('')
 
 
-# Run
 def run(vectors, forces, charges, sqrt, degrees,
         a_cos, cos, sin, radians, ui, _test_charge
         ):
@@ -218,3 +217,17 @@ def run(vectors, forces, charges, sqrt, degrees,
     ui.colored_print('>> ', 'red2')
     ui.colored_print('Press any key to go menu', 'blinking')
     input('')
+
+
+#------------------------------------------------------------------------------- help
+def help(ui):
+    ui.header('Help :')
+    print('''First import your charges with them details.
+then set TestCharge's intensity and its position.
+at last hit the 'Run' to calculate imported data.
+also you can monitor current imported data by selecting item '5'.
+    ''')
+    ui.colored_print('[Github]: github.com/ccxa\n', 'blue')
+    ui.colored_print('>> ', 'red2')
+    ui.colored_print('Hit enter to go menu', 'blinking')
+    wait = input('')

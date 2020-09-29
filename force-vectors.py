@@ -11,18 +11,6 @@ forces = {}  # a place to store each vectors forces
 # Add Charge
 
 
-#------------------------------------------------------------------------------- help
-def help():
-    ui.header('Help :')
-    print('''First import your charges with them details.
-then set TestCharge's intensity and its position.
-at last hit the 'Run' to calculate imported data.
-also you can monitor current imported data by selecting item '5'.
-    ''')
-    ui.colored_print('[Github]: github.com/ccxa\n', 'blue')
-    ui.colored_print('>> ', 'red2')
-    ui.colored_print('Hit enter to go menu', 'blinking')
-    wait = input('')
 #------------------------------------------------------------------------------- show list
 def showList():
     ui.header('Show list > Current Data :')
@@ -76,7 +64,7 @@ while True:
     elif cmd == "6":
         reset()
     elif cmd == "7":
-        help()
+       functions.help(ui)
     elif cmd == "8":
         os.system('clear')
         exit()
