@@ -42,11 +42,11 @@ while True:
     elif cmd == "4":
         functions.run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, test_charge)
     elif cmd == "5":
-        functions.showList(ui, charges, forces)
+        functions.show_list(ui, charges, forces)
     elif cmd == "6":
         reset()
     elif cmd == "7":
-       functions.help_message(ui)
+        functions.help_message(ui)
     elif cmd == "8":
         os.system('clear')
         exit()

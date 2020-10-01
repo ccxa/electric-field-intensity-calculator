@@ -232,21 +232,23 @@ also you can monitor current imported data by selecting item '5'.
     input('')
 
 
-def showList(ui, charges, forces):
+def show_list(ui, charges, forces):
+
     ui.header('Show list > Current Data :')
     ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
-    .format('Charge','x','y','MC','Force'), 'red')
+                     .format('Charge', 'x', 'y', 'MC', 'Force'), 'red')
     for charge in charges:
         name = charge
-        x,y = charges[charge][1],charges[charge][2]
+        x, y = charges[charge][1], charges[charge][2]
         intensity = int((charges[charge][0]))
         try:
             force = forces[charge]
         except KeyError:
             force = '---'
         print('| {0:^7s}|{1:^7d}|{2:^7d}|{3:^7d}|{4:^11}|'
-        .format(name,x,y,intensity,force))
+              .format(name, x, y, intensity, force))
     ui.colored_print('\n', 'blue')
     ui.colored_print('>> ', 'red2')
     ui.colored_print('Press any key to go menu', 'blinking')
-    wait = input('')
+    input('')
+
