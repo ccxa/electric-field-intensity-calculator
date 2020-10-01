@@ -202,6 +202,7 @@ def run(vectors, forces, charges, sqrt, degrees,
         vectors['i'].append(fx)
         vectors['j'].append(fy)
         forces[charge] = force
+
     # final calculate and show results
     i_total = sum(vectors['i'])
     j_total = sum(vectors['j'])
@@ -252,3 +253,19 @@ def show_list(ui, charges, forces):
     ui.colored_print('Press any key to go menu', 'blinking')
     input('')
 
+
+def reset(ui, charges, vectors, forces, t_charge):
+    ui.header('Reset :')
+    answer = input('Erase all imported data from memory? [y/n]\n>> ')
+    if answer in ['y', 'Y']:
+        charges.clear()
+        t_charge[0], t_charge[1], t_charge[2] = 1, 0, 0
+        vectors['i'].clear()
+        vectors['j'].clear()
+        forces.clear()
+        ui.colored_print('All data has been reset to default values.', 'red')
+        ui.colored_print('>> ', 'red2')
+        ui.colored_print('Hit enter to go menu.', 'blinking')
+        input('')
+    else:
+        return None
