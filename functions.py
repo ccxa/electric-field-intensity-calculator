@@ -162,34 +162,38 @@ def run(vectors, forces, charges, sqrt, degrees,
 
     for charge in charges.keys():
 
-        x, y = charges[charge][1], charges[charge][2]  # (x,y) of charge
+        # (x,y) of charge
+        x, y = charges[charge][1], charges[charge][2]
+        # Quantify charges and test charges values
         q = charges[charge][0]
-        tc = _test_charge[0]  # charge & testCharge
+        tc = _test_charge[0]
 
         # calculate Force
         q = q * 0.000001
         tc = tc * 0.000001
+
         # between q & tc
         distance = (sqrt((x**2) + (y**2))) * 0.01
+
         # constant value in physics formula
         k = (9 * (10**9))
         force = (round((k * (q * tc)) / (distance ** 2))) * 0.1
-        # (i,j) of this force vector
 
+        # (i,j) of this force vector
         if (q < 0 and tc < 0) or (q > 0 and tc > 0):
             i, j = -x, -y
         else:
             i, j = x, y
 
         # degree force vector
-        degree = (((i*5)+(j*0)) / (distance * 5)) / 100
+        degree = (((i*5) + (j*0)) / (distance*5)) / 100
         degree = round(degrees(a_cos(degree)))
         if 180 > degree > 90:
             degree = 180 - degree
         elif degree == 180:
             degree = 0
 
-        # F >> Fy & Fx
+        # separating F into Fx & Fy
         if degree == 0:
             fx, fy = force * (i/abs(i)), 0
 
@@ -198,6 +202,7 @@ def run(vectors, forces, charges, sqrt, degrees,
         else:
             fx = force * cos(radians(degree)) * (i/abs(i))
             fy = force * sin(radians(degree)) * (j/abs(j))
+
         # save to dict
         vectors['i'].append(fx)
         vectors['j'].append(fy)
