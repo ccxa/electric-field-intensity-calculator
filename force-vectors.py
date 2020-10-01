@@ -11,25 +11,7 @@ forces = {}  # a place to store each vectors forces
 # Add Charge
 
 
-#------------------------------------------------------------------------------- show list
-def showList():
-    ui.header('Show list > Current Data :')
-    ui.colored_print('| {0:^7s}|{1:^7s}|{2:^7s}|{3:^7s}|{4:^11s}|'
-    .format('Charge','x','y','MC','Force'), 'red')
-    for charge in charges:
-        name = charge
-        x,y = charges[charge][1],charges[charge][2]
-        intensity = int((charges[charge][0]))
-        try:
-            force = forces[charge]
-        except KeyError:
-            force = '---'
-        print('| {0:^7s}|{1:^7d}|{2:^7d}|{3:^7d}|{4:^11}|'
-        .format(name,x,y,intensity,force))
-    ui.colored_print('\n', 'blue')
-    ui.colored_print('>> ', 'red2')
-    ui.colored_print('Press any key to go menu', 'blinking')
-    wait = input('')
+
 #------------------------------------------------------------------------------- Reset
 def reset():
     ui.header('Reset :')
@@ -60,7 +42,7 @@ while True:
     elif cmd == "4":
         functions.run(vectors, forces, charges, sqrt, degrees, acos, cos, sin, radians, ui, test_charge)
     elif cmd == "5":
-        showList()
+        functions.showList(ui, charges, forces)
     elif cmd == "6":
         reset()
     elif cmd == "7":
